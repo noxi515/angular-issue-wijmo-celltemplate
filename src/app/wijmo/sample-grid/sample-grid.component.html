@@ -1,0 +1,32 @@
+<wj-flex-grid
+  [itemsSource]="data"
+  [allowAddNew]="true"
+  [allowDelete]="true"
+>
+
+  <wj-flex-grid-column
+    binding="prop0"
+    header="Prop 0"
+  >
+  </wj-flex-grid-column>
+
+  <wj-flex-grid-column
+    binding="prop1"
+    header="Prop 1"
+  >
+    <ng-template wjFlexGridCellTemplate cellType="CellEdit" let-item="item">
+      <wj-auto-complete
+        [itemsSource]="autocompleteSource"
+        headerPath="name"
+        displayMemberPath="name"
+        selectedValuePath="id"
+        searchMemberPath="id,age"
+        [isRequired]="false"
+        [(ngModel)]="item.prop1"
+      ></wj-auto-complete>
+    </ng-template>
+
+  </wj-flex-grid-column>
+
+
+</wj-flex-grid>
